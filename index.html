@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="DataPilot AI - interactive data analysis dashboard" />
+    <title>DataPilot AI</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">DP</span><span>DataPilot AI</span></div>
+      <span class="stage">Interactive analytics prototype</span>
+    </header>
+
+    <main>
+      <section id="welcome" class="welcome">
+        <div>
+          <p class="eyebrow">AI DATA ANALYST</p>
+          <h1>Turn a CSV into an interactive dashboard.</h1>
+          <p class="lede">Upload your dataset. DataPilot detects usable columns, generates charts, and keeps KPIs, tables, and visualizations in the same filter scope.</p>
+          <label class="upload-button" for="csv-upload">Upload CSV<input id="csv-upload" type="file" accept=".csv,text/csv" /></label>
+          <button id="load-sample" class="text-button">or explore the sample customer dataset</button>
+          <p id="upload-error" class="error" role="alert"></p>
+        </div>
+        <aside class="welcome-card">
+          <span class="card-label">FIRST MILESTONE</span>
+          <h2>Explore</h2>
+          <ul>
+            <li>Automatic column profiling</li>
+            <li>Generated charts and KPI cards</li>
+            <li>Category, number, and chart-click filters</li>
+            <li>Filtered data preview</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section id="workspace" class="workspace hidden">
+        <div class="workspace-heading">
+          <div><p class="eyebrow" id="dataset-label">DATASET</p><h1 id="dataset-name">Dashboard</h1></div>
+          <button id="new-dataset" class="outline-button">Upload another CSV</button>
+        </div>
+
+        <section class="quality-strip" aria-label="Dataset profile">
+          <article><span id="rows-kpi">-</span><small>Visible rows</small></article>
+          <article><span id="columns-kpi">-</span><small>Columns</small></article>
+          <article><span id="missing-kpi">-</span><small>Missing values</small></article>
+          <article><span id="numeric-kpi">-</span><small>Numeric fields</small></article>
+        </section>
+
+        <section class="content-grid">
+          <aside class="filters panel">
+            <div class="panel-heading"><div><p class="eyebrow">FILTERS</p><h2>Explore the cohort</h2></div><button id="reset-filters" class="text-button">Reset all</button></div>
+            <p class="scope" id="scope-text">All rows</p>
+            <div id="filter-controls"></div>
+            <section class="schema-section"><h3>Detected fields</h3><div id="schema-list"></div></section>
+          </aside>
+
+          <div class="dashboard">
+            <div class="section-title"><p class="eyebrow">AUTOMATIC ANALYSIS</p><h2>Generated dashboard</h2><p>Click a chart element to add or remove a category filter.</p></div>
+            <div class="chart-grid">
+              <section class="panel chart-card"><h3 id="distribution-title">Distribution</h3><div id="distribution-chart" class="chart"></div></section>
+              <section class="panel chart-card"><h3 id="category-title">Category breakdown</h3><div id="category-chart" class="chart"></div></section>
+              <section class="panel chart-card wide"><h3 id="trend-title">Relationship</h3><div id="relationship-chart" class="chart"></div></section>
+            </div>
+            <section class="panel table-card"><div class="panel-heading"><div><p class="eyebrow">FILTERED DATA</p><h2>Rows in current scope</h2></div><span id="table-count"></span></div><div class="table-wrap"><table><thead id="data-head"></thead><tbody id="data-body"></tbody></table></div></section>
+          </div>
+        </section>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
+
