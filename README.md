@@ -12,13 +12,9 @@ DataPilot AI is a portfolio project for exploring tabular datasets. This first r
 - Click a category bar to cross-filter the dashboard
 - Reset filters and inspect the filtered rows
 
-## Run locally
+## Live Demo
 
-This release is a static web application. From the `datapilot-ai` directory, serve the files with any local web server:
-
-```powershell
-python -m http.server 8000
-```
+Try DataPilot AI here: [Open the live dashboard](https://data-pilot-ai-pied.vercel.app/)
 
 Open `http://localhost:8000` in a browser. Use a local server because the sample dataset is loaded with `fetch`.
 
